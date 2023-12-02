@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="020870d53a604cb995f19505f7edac38" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryBaseModel.category_materials" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryBaseModel.list__of_posts" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryBaseModel.list_employees" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryBaseModel.materials" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryBaseModel.order_composition" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryBaseModel.orders" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryBaseModel.services" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryBaseModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryBaseModel.Users" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="LibraryBaseModel.FK_materials_category_materials" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryBaseModel.FK_list_employees_list__of_posts" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryBaseModel.FK_order_composition_list_employees" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryBaseModel.FK_Users_list_employees1" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryBaseModel.FK_order_composition_materials" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryBaseModel.FK_order_composition_orders" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryBaseModel.FK_order_composition_services" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

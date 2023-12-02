@@ -1,0 +1,16 @@
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\bin\Debug\Console.exe.config
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\bin\Debug\Console.exe
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\bin\Debug\Console.pdb
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\bin\Debug\EntityFramework.dll
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\bin\Debug\EntityFramework.SqlServer.dll
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\bin\Debug\HashPassword.dll
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\bin\Debug\HashPassword.pdb
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\bin\Debug\EntityFramework.xml
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\bin\Debug\EntityFramework.SqlServer.xml
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\bin\Debug\ru\EntityFramework.resources.dll
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\obj\Debug\Consoles.csproj.AssemblyReference.cache
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\obj\Debug\Consoles.csproj.SuggestedBindingRedirects.cache
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\obj\Debug\Consoles.csproj.CoreCompileInputs.cache
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\obj\Debug\Consoles.csproj.CopyComplete
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\obj\Debug\Console.exe
+G:\pr-22.107k-prakt5\pr-3-Dzhorabaev\Console\obj\Debug\Console.pdb

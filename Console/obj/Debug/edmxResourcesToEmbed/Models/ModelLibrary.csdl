@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="category_materials">
+    <Key>
+      <PropertyRef Name="category__code" />
+    </Key>
+    <Property Name="category__code" Type="Int32" Nullable="false" />
+    <Property Name="nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="materials" Relationship="Self.FK_materials_category_materials" FromRole="category_materials" ToRole="materials" />
+  </EntityType>
+  <EntityType Name="list__of_posts">
+    <Key>
+      <PropertyRef Name="position_number" />
+    </Key>
+    <Property Name="position_number" Type="Int32" Nullable="false" />
+    <Property Name="naimenovanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="oklad" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="list_employees" Relationship="Self.FK_list_employees_list__of_posts" FromRole="list__of_posts" ToRole="list_employees" />
+  </EntityType>
+  <EntityType Name="list_employees">
+    <Key>
+      <PropertyRef Name="id_employees" />
+    </Key>
+    <Property Name="id_employees" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="position_number" Type="Int32" Nullable="false" />
+    <Property Name="imya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="familiya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date_birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="list__of_posts" Relationship="Self.FK_list_employees_list__of_posts" FromRole="list_employees" ToRole="list__of_posts" />
+    <NavigationProperty Name="order_composition" Relationship="Self.FK_order_composition_list_employees" FromRole="list_employees" ToRole="order_composition" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_list_employees1" FromRole="list_employees" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="materials">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="Int64" Nullable="false" />
+    <Property Name="nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="category_kod" Type="Int32" Nullable="false" />
+    <Property Name="scena_material" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="category_materials" Relationship="Self.FK_materials_category_materials" FromRole="materials" ToRole="category_materials" />
+    <NavigationProperty Name="order_composition" Relationship="Self.FK_order_composition_materials" FromRole="materials" ToRole="order_composition" />
+  </EntityType>
+  <EntityType Name="order_composition">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="nomer_zakaza" Type="Int32" Nullable="false" />
+    <Property Name="nomer_sotrudnika" Type="Int32" Nullable="false" />
+    <Property Name="kod_uslugi" Type="Int32" Nullable="false" />
+    <Property Name="tarif" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="kolichestvo_uslug" Type="Int64" Nullable="false" />
+    <Property Name="material_kod" Type="Int64" Nullable="false" />
+    <Property Name="kolichestvo_material" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="list_employees" Relationship="Self.FK_order_composition_list_employees" FromRole="order_composition" ToRole="list_employees" />
+    <NavigationProperty Name="materials" Relationship="Self.FK_order_composition_materials" FromRole="order_composition" ToRole="materials" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_order_composition_orders" FromRole="order_composition" ToRole="orders" />
+    <NavigationProperty Name="services" Relationship="Self.FK_order_composition_services" FromRole="order_composition" ToRole="services" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="nomer_zakaza" />
+    </Key>
+    <Property Name="nomer_zakaza" Type="Int32" Nullable="false" />
+    <Property Name="imya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="familiya" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telephone" Type="Int64" />
+    <Property Name="data_zakaza" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="data_vipolneniya" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="order_composition" Relationship="Self.FK_order_composition_orders" FromRole="orders" ToRole="order_composition" />
+  </EntityType>
+  <EntityType Name="services">
+    <Key>
+      <PropertyRef Name="service_code" />
+    </Key>
+    <Property Name="service_code" Type="Int32" Nullable="false" />
+    <Property Name="name_service" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="order_composition" Relationship="Self.FK_order_composition_services" FromRole="services" ToRole="order_composition" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Int32" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="list_employees" Relationship="Self.FK_Users_list_employees1" FromRole="Users" ToRole="list_employees" />
+  </EntityType>
+  <Association Name="FK_materials_category_materials">
+    <End Role="category_materials" Type="Self.category_materials" Multiplicity="1" />
+    <End Role="materials" Type="Self.materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category_materials">
+        <PropertyRef Name="category__code" />
+      </Principal>
+      <Dependent Role="materials">
+        <PropertyRef Name="category_kod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_list_employees_list__of_posts">
+    <End Role="list__of_posts" Type="Self.list__of_posts" Multiplicity="1" />
+    <End Role="list_employees" Type="Self.list_employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="list__of_posts">
+        <PropertyRef Name="position_number" />
+      </Principal>
+      <Dependent Role="list_employees">
+        <PropertyRef Name="position_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_composition_list_employees">
+    <End Role="list_employees" Type="Self.list_employees" Multiplicity="1" />
+    <End Role="order_composition" Type="Self.order_composition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="list_employees">
+        <PropertyRef Name="id_employees" />
+      </Principal>
+      <Dependent Role="order_composition">
+        <PropertyRef Name="nomer_sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_list_employees1">
+    <End Role="list_employees" Type="Self.list_employees" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="list_employees">
+        <PropertyRef Name="id_employees" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_composition_materials">
+    <End Role="materials" Type="Self.materials" Multiplicity="1" />
+    <End Role="order_composition" Type="Self.order_composition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materials">
+        <PropertyRef Name="code" />
+      </Principal>
+      <Dependent Role="order_composition">
+        <PropertyRef Name="material_kod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_composition_orders">
+    <End Role="orders" Type="Self.orders" Multiplicity="1" />
+    <End Role="order_composition" Type="Self.order_composition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="nomer_zakaza" />
+      </Principal>
+      <Dependent Role="order_composition">
+        <PropertyRef Name="nomer_zakaza" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_composition_services">
+    <End Role="services" Type="Self.services" Multiplicity="1" />
+    <End Role="order_composition" Type="Self.order_composition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="services">
+        <PropertyRef Name="service_code" />
+      </Principal>
+      <Dependent Role="order_composition">
+        <PropertyRef Name="kod_uslugi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LibraryBaseEntitiess" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="category_materials" EntityType="Self.category_materials" />
+    <EntitySet Name="list__of_posts" EntityType="Self.list__of_posts" />
+    <EntitySet Name="list_employees" EntityType="Self.list_employees" />
+    <EntitySet Name="materials" EntityType="Self.materials" />
+    <EntitySet Name="order_composition" EntityType="Self.order_composition" />
+    <EntitySet Name="orders" EntityType="Self.orders" />
+    <EntitySet Name="services" EntityType="Self.services" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_materials_category_materials" Association="Self.FK_materials_category_materials">
+      <End Role="category_materials" EntitySet="category_materials" />
+      <End Role="materials" EntitySet="materials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_list_employees_list__of_posts" Association="Self.FK_list_employees_list__of_posts">
+      <End Role="list__of_posts" EntitySet="list__of_posts" />
+      <End Role="list_employees" EntitySet="list_employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_composition_list_employees" Association="Self.FK_order_composition_list_employees">
+      <End Role="list_employees" EntitySet="list_employees" />
+      <End Role="order_composition" EntitySet="order_composition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_list_employees1" Association="Self.FK_Users_list_employees1">
+      <End Role="list_employees" EntitySet="list_employees" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_composition_materials" Association="Self.FK_order_composition_materials">
+      <End Role="materials" EntitySet="materials" />
+      <End Role="order_composition" EntitySet="order_composition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_composition_orders" Association="Self.FK_order_composition_orders">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="order_composition" EntitySet="order_composition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_composition_services" Association="Self.FK_order_composition_services">
+      <End Role="services" EntitySet="services" />
+      <End Role="order_composition" EntitySet="order_composition" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
